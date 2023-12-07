@@ -3,16 +3,20 @@ on:
   push:
     branches:
       - main
+
 jobs:
   up:
     name: Update
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
-      
+        uses: actions/checkout@v4
+
       - name: Setup Node.js ✨
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
@@ -20,24 +24,33 @@ jobs:
       - name: Install dependencies 📦
         run: npm install
 
+      - name: Check linting 🚔
+        run: npm run lint
+
       - name: Build 🏗️
-        env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
-        run: |
-          npm run build
+        run: npm run build
 
-      - name: Setup Go ✨
-        uses: actions/setup-go@v3
+      # - name: Setup Go ✨
+      #   uses: actions/setup-go@v3
+      #   with:
+      #     go-version: "1.20"
+
+      # - name: Downloading dependencies 📦
+      #   run: go mod download
+
+      # - name: Applying infrastructure 🚀
+      #   uses: pulumi/actions@v4
+      #   with:
+      #     command: up
+      #     stack-name: dev
+      #   env:
+      #     PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+
+      - name: Deploy to Azure 💦
+        uses: Azure/static-web-apps-deploy@v1
         with:
-          go-version: '1.20'
-
-      - name: Downloading dependencies 📦
-        run: go mod download
-
-      - name: Applying infrastructure 🚀
-        uses: pulumi/actions@v4
-        with:
-          command: up
-          stack-name: dev
-        env:
-          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "front"
+          output_location: "build"
