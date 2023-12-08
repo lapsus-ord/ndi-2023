@@ -1,8 +1,8 @@
 <script>
   import QuestionButtons from './question_buttons.svelte';
-  let test2 = ""
-  function handleSubmit(){
-    console.log(test2)
+  let test2 = '';
+  function handleSubmit() {
+    console.log(test2);
   }
 </script>
 

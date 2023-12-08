@@ -1,5 +1,5 @@
 <script>
-  let button = "";
+  let button = '';
   /**
    * @type {string}
    */

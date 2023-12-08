@@ -7,7 +7,7 @@
   export const prerender = false;
 
   function changePreset(e: Event) {
-    document.body.setAttribute('data-theme', e.target.value)
+    document.body.setAttribute('data-theme', e.target.value);
   }
 
   function setBodyThemeAttribute(): void {}
@@ -24,10 +24,10 @@
       </svelte:fragment>
       <svelte:fragment slot="trail">
         <RadioGroup>
-          <RadioItem bind:group={value} name="justify" value='skeleton' on:click={(e) => changePreset(e)}>skeleton</RadioItem>
-          <RadioItem bind:group={value} name="justify" value='crimson' on:click={(e) => changePreset(e)}>crimson</RadioItem>
-          <RadioItem bind:group={value} name="justify" value='wintry' on:click={(e) => changePreset(e)}>wintry</RadioItem>
-          <RadioItem bind:group={value} name="justify" value='modern' on:click={(e) => changePreset(e)}>modern</RadioItem>
+          <RadioItem bind:group={value} name="justify" value="skeleton" on:click={(e) => changePreset(e)}>skeleton</RadioItem>
+          <RadioItem bind:group={value} name="justify" value="crimson" on:click={(e) => changePreset(e)}>crimson</RadioItem>
+          <RadioItem bind:group={value} name="justify" value="wintry" on:click={(e) => changePreset(e)}>wintry</RadioItem>
+          <RadioItem bind:group={value} name="justify" value="modern" on:click={(e) => changePreset(e)}>modern</RadioItem>
         </RadioGroup>
         <a class="btn btn-sm variant-ghost-surface" href="https://github.com/lapsus-ord/ndi-2023" target="_blank" rel="noreferrer"> GitHub </a>
       </svelte:fragment>
