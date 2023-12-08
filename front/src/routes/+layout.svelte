@@ -2,19 +2,17 @@
   import { onMount } from 'svelte';
   import '../app.postcss';
   import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
-  import { AppShell, AppBar, storePopup, RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
+  import { AppShell, AppBar, storePopup, LightSwitch } from '@skeletonlabs/skeleton';
   import type { Auth0Client } from '@auth0/auth0-spa-js';
+  import Icon from '@iconify/svelte';
   import auth from '$lib/auth/authService';
   import { isAuthenticated, user } from '$lib/auth/store';
   import UserDropdownMenu from '$lib/components/user-dropdown-menu.svelte';
+  import ThemeDropdown from '$lib/components/theme-dropdown.svelte';
 
   export const ssr = false;
   export const csr = true;
   export const prerender = false;
-
-  let value = 'skeleton';
-  function setBodyThemeAttribute(): void {}
-  setBodyThemeAttribute();
 
   storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
@@ -54,8 +52,8 @@
     });
   }
 
-  function changePreset(e: Event) {
-    document.body.setAttribute('data-theme', (e.target as HTMLInputElement).value);
+  function changePreset(e: CustomEvent) {
+    document.body.setAttribute('data-theme', e.detail);
   }
 </script>
 
@@ -73,13 +71,13 @@
         </a>
       </svelte:fragment>
       <svelte:fragment slot="trail">
-        <a class="btn btn-sm variant-ghost-surface" href="https://github.com/lapsus-ord/ndi-2023" target="_blank" rel="noreferrer"> GitHub </a>
-        <RadioGroup>
-          <RadioItem bind:group={value} name="justify" value="skeleton" on:click={(e) => changePreset(e)}>skeleton</RadioItem>
-          <RadioItem bind:group={value} name="justify" value="crimson" on:click={(e) => changePreset(e)}>crimson</RadioItem>
-          <RadioItem bind:group={value} name="justify" value="wintry" on:click={(e) => changePreset(e)}>wintry</RadioItem>
-          <RadioItem bind:group={value} name="justify" value="modern" on:click={(e) => changePreset(e)}>modern</RadioItem>
-        </RadioGroup>
+        <LightSwitch />
+        <a class="btn btn-sm variant-ghost-surface" href="https://github.com/lapsus-ord/ndi-2023" target="_blank" title="Github source">
+          <Icon icon="mingcute:github-line" style="font-size: 24px" class="text-surface-300" />
+          <Icon icon="mingcute:external-link-line" style="font-size: 20px" class="text-surface-300" />
+        </a>
+        <ThemeDropdown on:newTheme={(theme) => changePreset(theme)} />
+
         {#if isLoginLoading}
           <button type="button" class="btn variant-ghost-surface w-48">
             <div class="placeholder" />
