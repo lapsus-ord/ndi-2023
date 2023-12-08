@@ -1,7 +1,7 @@
-import { app, HttpRequest, HttpResponseInit, InvocationContext } from '@azure/functions';
+import { app, HttpResponseInit } from '@azure/functions';
 import { MongoClient } from 'mongodb';
 
-async function getFact(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
+async function getFact(): Promise<HttpResponseInit> {
   const mongoUri = process.env["MONGODB_URI"];
   const mongoClient = new MongoClient(mongoUri);
   const database = mongoClient.db('main');
