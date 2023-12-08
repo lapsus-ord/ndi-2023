@@ -1,0 +1,31 @@
+name: Publish Function zipped to GH Releases
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  up:
+    name: Create release-artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Build
+        working-directory: "back"
+        run: |
+          rustup target add x86_64-unknown-linux-musl
+          cargo build --release --target=x86_64-unknown-linux-musl
+          cp target/x86_64-unknown-linux-musl/release/handler .
+
+      - name: Create Zip Archive
+        uses: actions/upload-artifact@v3
+        with:
+          path: |
+            back/handler
+            back/GetFact/
+            back/RetrieveFacts/
+            back/host.json
