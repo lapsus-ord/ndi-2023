@@ -29,11 +29,7 @@
   }
 
   function onFactResponse(e: CustomEvent<{ userResponse: boolean }>) {
-    if (currentFact?.thruth === e.detail.userResponse) {
-      hasSucceeded = true;
-    } else {
-      hasSucceeded = false;
-    }
+    hasSucceeded = currentFact?.truth === e.detail.userResponse;
   }
 </script>
 

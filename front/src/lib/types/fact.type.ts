@@ -1,5 +1,5 @@
 export type Fact = {
   fact: string;
-  thruth: boolean;
+  truth: boolean;
   explanation: string;
 };

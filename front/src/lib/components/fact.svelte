@@ -18,7 +18,7 @@
 </script>
 
 <div class="w-1/2 p-2 space-y-6">
-  <div class="h-10 flex justify-center mb-14 text-lg">
+  <div class="h-10 flex justify-center text-lg">
     {fact.fact}
   </div>
   <div class="gap-2 grid grid-cols-2">
@@ -35,6 +35,10 @@
     <div class="text-xl font-bold">❌ Ah mince... Ce n'est pas tout à fait ça. 😢</div>
   {/if}
   {#if hasSucceeded !== null}
+    <div class="text-xl">
+      <strong>Explication :</strong>
+      <div>{fact.explanation}</div>
+    </div>
     <button class="btn btn-lg variant-filled-primary" on:click={onNextFact}>⏭️&nbsp;Continuer</button>
   {/if}
 </div>
