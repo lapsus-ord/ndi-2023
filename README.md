@@ -10,7 +10,7 @@ Notre application vise à démystifier les idées reçues sur l'écologie grâce
 ### Architecture
 
 #### Backend
-- **Langage de Développement :** Rust, Typescript (Serverless)
+- **Langage de Développement :** Typescript (Serverless)
 - **Hébergement :** Microsoft Azure, Auth0 (login), Mongo Atlas (DB)
 
 #### Frontend
@@ -19,6 +19,25 @@ Notre application vise à démystifier les idées reçues sur l'écologie grâce
 #### Intelligence Artificielle
 - **Modèle :** Azure OpenAI
 
-## Installation
+## Lancer en mode développement
 
-TODO
+Nous avons utilisé auth0 pour l'authentification mais nous n'avons pas besoin pour jouer au jeu.
+
+Pour lancer le site web :
+
+```bash
+cd front/
+npm run dev
+```
+
+Pour lancer le serveur :
+
+```bash
+cd back/
+npm run start
+```
+
+> ℹ️ Note : Pour lancer le serveur en mode développement vous avez besoin de l'Azure CLI,
+> puisque nous utilisons une fonction serverless de chez Azure (donc leur librairie).
+
+Et ajouter l'url de l'api dans le [`.env`](front/.env.example) du dossier front : `VITE_API_BASE=""`
