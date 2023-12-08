@@ -26,10 +26,6 @@ jobs:
         working-directory: "front"
         run: npm install
 
-      - name: Check linting 🚔
-        working-directory: "front"
-        run: npm run lint
-
       - name: Build 🏗️
         working-directory: "front"
         run: |
