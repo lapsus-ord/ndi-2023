@@ -59,6 +59,10 @@
   }
 </script>
 
+<svelte:head>
+  <title>Chat Noir Project</title>
+</svelte:head>
+
 <AppShell>
   <svelte:fragment slot="header">
     <AppBar>

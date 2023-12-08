@@ -1,6 +1,8 @@
 <script>
   import QuestionButtons from './question_buttons.svelte';
+
   let test2 = '';
+
   function handleSubmit() {
     console.log(test2);
   }
@@ -14,7 +16,7 @@
     <QuestionButtons />
   </div>
   <div class="flex justify-center space-x-4">
-    <a class="btn variant-filled" data-sveltekit-preload-data="hover" on:click={handleSubmit()}>Valider</a>
-    <a class="btn variant-filled" data-sveltekit-preload-data="hover">Passer ⏩</a>
+    <button class="btn variant-filled" data-sveltekit-preload-data="hover" on:click={handleSubmit}>Valider</button>
+    <button class="btn variant-filled" data-sveltekit-preload-data="hover">Passer ⏩</button>
   </div>
 </div>
