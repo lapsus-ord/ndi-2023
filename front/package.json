@@ -36,5 +36,9 @@
     "vite": "^4.4.2",
     "vite-plugin-tailwind-purgecss": "0.1.4"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@auth0/auth0-spa-js": "^2.1.2",
+    "@floating-ui/dom": "^1.5.3"
+  }
 }
