@@ -34,15 +34,10 @@ jobs:
       #       back/RetrieveFacts/
       #       back/host.json
 
-      - name: Tag version
-        uses: anothrNick/github-tag-action@1.34.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CUSTOM_TAG: v1.0
-
       - name: Release with Notes
         uses: softprops/action-gh-release@v1
         with:
           files: handler.zip
+          tag_name: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
