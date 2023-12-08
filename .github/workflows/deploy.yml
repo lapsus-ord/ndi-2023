@@ -32,6 +32,9 @@ jobs:
 
       - name: Build 🏗️
         working-directory: "front"
+        env:
+          VITE_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+          VITE_AUTH0_CLIENTID: ${{ secrets.AUTH0_CLIENTID }}
         run: npm run build
 
       # - name: Setup Go ✨
