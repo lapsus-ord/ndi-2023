@@ -23,16 +23,20 @@ jobs:
           rustup target add x86_64-unknown-linux-musl
           cargo build --release --target=x86_64-unknown-linux-musl
           cp target/x86_64-unknown-linux-musl/release/handler .
+          zip handler.zip handler host.json GetFact/* RetrieveFacts/*
 
-      - name: Create Zip Archive
-        uses: actions/upload-artifact@v3
-        with:
-          path: |
-            back/handler
-            back/GetFact/
-            back/RetrieveFacts/
-            back/host.json
+      # - name: Create Zip Archive
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     path: |
+      #       back/handler
+      #       back/GetFact/
+      #       back/RetrieveFacts/
+      #       back/host.json
 
-      - uses: ncipollo/release-action@v1
+      - name: Release with Notes
+        uses: softprops/action-gh-release@v1
         with:
-          artifacts: "artifact"
+          files: handler.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
