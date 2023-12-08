@@ -71,6 +71,7 @@
         </a>
       </svelte:fragment>
       <svelte:fragment slot="trail">
+        <a href="/escape-game">Escape Game</a>
         <LightSwitch />
         <a class="btn btn-sm variant-ghost-surface" href="https://github.com/lapsus-ord/ndi-2023" target="_blank" title="Github source">
           <Icon icon="mingcute:github-line" style="font-size: 24px" class="text-surface-300" />
