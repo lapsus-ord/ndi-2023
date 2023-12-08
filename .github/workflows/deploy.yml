@@ -32,10 +32,10 @@ jobs:
 
       - name: Build 🏗️
         working-directory: "front"
-        env:
-          VITE_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-          VITE_AUTH0_CLIENTID: ${{ secrets.AUTH0_CLIENTID }}
-        run: npm run build
+        run: |
+          echo VITE_AUTH0_DOMAIN=${{ secrets.AUTH0_DOMAIN }} >> .env
+          echo VITE_AUTH0_CLIENTID=${{ secrets.AUTH0_CLIENTID }} >> .env
+          npm run build
 
       # - name: Setup Go ✨
       #   uses: actions/setup-go@v3
