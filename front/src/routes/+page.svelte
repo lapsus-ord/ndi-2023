@@ -5,7 +5,7 @@
 <div class="container h-full mx-auto flex justify-center items-center">
   <div class="space-y-10 text-center flex flex-col items-center w-full">
     <h2 class="h2">Chat Noir FTW</h2>
-    <button type="button" class="btn btn-xl variant-filled">Jouer</button>
+    <a href="/game" class="btn btn-xl variant-filled">Jouer</a>
     <section class="leaderboard-section">
       <Leaderboard />
     </section>

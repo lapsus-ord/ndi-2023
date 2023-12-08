@@ -67,16 +67,19 @@
   <svelte:fragment slot="header">
     <AppBar>
       <svelte:fragment slot="lead">
-        <strong class="text-xl uppercase">🐈‍⬛ Chat Noir Project</strong>
+        <a href="/">
+          <span class="text-3xl">🐈‍⬛</span>
+          <strong class="text-xl uppercase hover:underline underline-offset-4 decoration-2">Chat Noir Project</strong>
+        </a>
       </svelte:fragment>
       <svelte:fragment slot="trail">
+        <a class="btn btn-sm variant-ghost-surface" href="https://github.com/lapsus-ord/ndi-2023" target="_blank" rel="noreferrer"> GitHub </a>
         <RadioGroup>
           <RadioItem bind:group={value} name="justify" value="skeleton" on:click={(e) => changePreset(e)}>skeleton</RadioItem>
           <RadioItem bind:group={value} name="justify" value="crimson" on:click={(e) => changePreset(e)}>crimson</RadioItem>
           <RadioItem bind:group={value} name="justify" value="wintry" on:click={(e) => changePreset(e)}>wintry</RadioItem>
           <RadioItem bind:group={value} name="justify" value="modern" on:click={(e) => changePreset(e)}>modern</RadioItem>
         </RadioGroup>
-        <a class="btn btn-sm variant-ghost-surface" href="https://github.com/lapsus-ord/ndi-2023" target="_blank" rel="noreferrer"> GitHub </a>
         {#if isLoginLoading}
           <button type="button" class="btn variant-ghost-surface w-48">
             <div class="placeholder" />
@@ -86,7 +89,6 @@
         {:else}
           <button type="button" class="btn variant-ghost-surface" on:click={login}>Se connecter</button>
         {/if}
-        <!-- <a class="btn btn-sm variant-ghost-surface" href="https://github.com/lapsus-ord/ndi-2023" target="_blank" rel="noreferrer">GitHub</a> -->
       </svelte:fragment>
     </AppBar>
   </svelte:fragment>
