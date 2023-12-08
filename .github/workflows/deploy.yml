@@ -31,6 +31,7 @@ jobs:
         run: |
           echo VITE_AUTH0_DOMAIN=${{ secrets.AUTH0_DOMAIN }} >> .env
           echo VITE_AUTH0_CLIENTID=${{ secrets.AUTH0_CLIENTID }} >> .env
+          echo VITE_API_BASE=${{ secrets.API_BASE }} >> .env
           npm run build
 
       # - name: Setup Go ✨
